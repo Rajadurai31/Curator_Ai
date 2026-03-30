@@ -83,7 +83,7 @@ export default function Dashboard() {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept=".pdf,.docx"
+                accept=".pdf,.docx,.txt"
                 className="hidden"
                 onChange={(e) => setResumeFile(e.target.files[0] || null)}
               />
@@ -97,7 +97,7 @@ export default function Dashboard() {
                 <>
                   <span className="material-symbols-outlined text-4xl text-[#777c79] mb-3 block">description</span>
                   <p className="text-sm text-[#5c605e]">Drag & drop or click to upload</p>
-                  <p className="text-xs text-[#afb3b0] mt-1">PDF or DOCX</p>
+                  <p className="text-xs text-[#afb3b0] mt-1">PDF, DOCX, or TXT</p>
                 </>
               )}
             </div>
