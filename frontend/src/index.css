@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #f9f9f7;
+  --color-surface-bright: #f9f9f7;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f2;
+  --color-surface-container: #eceeec;
+  --color-surface-container-high: #e6e9e6;
+  --color-surface-container-highest: #e0e3e0;
+  --color-surface-dim: #d7dbd8;
+  --color-surface-variant: #e0e3e0;
+  --color-surface-tint: #506454;
+  --color-on-surface: #2f3332;
+  --color-on-surface-variant: #5c605e;
+  --color-on-background: #2f3332;
+  --color-background: #f9f9f7;
+  --color-primary: #506454;
+  --color-on-primary: #e8ffea;
+  --color-primary-container: #d2e8d4;
+  --color-on-primary-container: #435647;
+  --color-primary-fixed: #d2e8d4;
+  --color-primary-fixed-dim: #c4dac6;
+  --color-primary-dim: #445848;
+  --color-on-primary-fixed: #314435;
+  --color-on-primary-fixed-variant: #4d6050;
+  --color-secondary: #605f5f;
+  --color-on-secondary: #fbf8f8;
+  --color-secondary-container: #e5e2e1;
+  --color-on-secondary-container: #525151;
+  --color-secondary-fixed: #e5e2e1;
+  --color-secondary-fixed-dim: #d6d4d3;
+  --color-secondary-dim: #535353;
+  --color-on-secondary-fixed: #403f3f;
+  --color-on-secondary-fixed-variant: #5c5b5b;
+  --color-tertiary: #586433;
+  --color-on-tertiary: #f2ffc7;
+  --color-tertiary-container: #eefdbe;
+  --color-on-tertiary-container: #566232;
+  --color-tertiary-fixed: #eefdbe;
+  --color-tertiary-fixed-dim: #e0efb1;
+  --color-tertiary-dim: #4c5829;
+  --color-on-tertiary-fixed: #445021;
+  --color-on-tertiary-fixed-variant: #606d3b;
+  --color-error: #a83836;
+  --color-on-error: #fff7f6;
+  --color-error-container: #fa746f;
+  --color-on-error-container: #6e0a12;
+  --color-error-dim: #67040d;
+  --color-outline: #777c79;
+  --color-outline-variant: #afb3b0;
+  --color-inverse-surface: #0d0f0e;
+  --color-inverse-on-surface: #9c9d9b;
+  --color-inverse-primary: #e0f7e2;
+
+  --font-headline: "Newsreader", serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+
+  --radius: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    margin: 0;
+  }
+}
+
+.dot-grid {
+  background-image: radial-gradient(#afb3b0 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.hex-container {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}

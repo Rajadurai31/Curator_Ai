@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Curator AI - Career Agent Workflow</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f9f9f7",
+              "tertiary-dim": "#4c5829",
+              "inverse-primary": "#e0f7e2",
+              "secondary-fixed-dim": "#d6d4d3",
+              "surface": "#f9f9f7",
+              "surface-container-lowest": "#ffffff",
+              "surface-tint": "#506454",
+              "secondary-container": "#e5e2e1",
+              "on-error": "#fff7f6",
+              "error-container": "#fa746f",
+              "secondary-dim": "#535353",
+              "primary": "#506454",
+              "on-primary": "#e8ffea",
+              "error-dim": "#67040d",
+              "on-tertiary-container": "#566232",
+              "on-tertiary": "#f2ffc7",
+              "on-tertiary-fixed-variant": "#606d3b",
+              "on-secondary-fixed": "#403f3f",
+              "on-error-container": "#6e0a12",
+              "on-secondary-container": "#525151",
+              "on-primary-fixed": "#314435",
+              "error": "#a83836",
+              "outline-variant": "#afb3b0",
+              "primary-fixed-dim": "#c4dac6",
+              "tertiary-container": "#eefdbe",
+              "on-surface-variant": "#5c605e",
+              "primary-dim": "#445848",
+              "secondary": "#605f5f",
+              "surface-container-highest": "#e0e3e0",
+              "on-primary-container": "#435647",
+              "on-secondary-fixed-variant": "#5c5b5b",
+              "secondary-fixed": "#e5e2e1",
+              "inverse-on-surface": "#9c9d9b",
+              "tertiary-fixed-dim": "#e0efb1",
+              "on-secondary": "#fbf8f8",
+              "inverse-surface": "#0d0f0e",
+              "tertiary": "#586433",
+              "surface-container-high": "#e6e9e6",
+              "on-background": "#2f3332",
+              "surface-dim": "#d7dbd8",
+              "surface-variant": "#e0e3e0",
+              "on-surface": "#2f3332",
+              "surface-container": "#eceeec",
+              "surface-container-low": "#f3f4f2",
+              "on-primary-fixed-variant": "#4d6050",
+              "background": "#f9f9f7",
+              "tertiary-fixed": "#eefdbe",
+              "on-tertiary-fixed": "#445021",
+              "outline": "#777c79",
+              "primary-container": "#d2e8d4",
+              "primary-fixed": "#d2e8d4"
+            },
+            fontFamily: {
+              "headline": ["Newsreader", "serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .dot-grid {
+        background-image: radial-gradient(#afb3b0 0.5px, transparent 0.5px);
+        background-size: 24px 24px;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      .hex-container {
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#f9f9f7]/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(47,51,50,0.04)]">
+<div class="flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-serif italic text-[#222222]">Curator AI</div>
+<div class="hidden md:flex gap-10">
+<a class="text-[#506454] border-b-2 border-[#506454] pb-1 font-serif italic text-lg tracking-tight font-['Newsreader']" href="#">Dashboard</a>
+<a class="text-[#2f3332]/60 hover:text-[#506454] transition-colors duration-300 font-serif italic text-lg tracking-tight font-['Newsreader']" href="#">Advisory</a>
+<a class="text-[#2f3332]/60 hover:text-[#506454] transition-colors duration-300 font-serif italic text-lg tracking-tight font-['Newsreader']" href="#">Network</a>
+<a class="text-[#2f3332]/60 hover:text-[#506454] transition-colors duration-300 font-serif italic text-lg tracking-tight font-['Newsreader']" href="#">Portfolio</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">settings</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden">
+<img alt="Professional portrait of the user" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man in a beige linen suit with soft natural lighting and minimalist studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH3VImJ-O3bwNefe_8fanrGJVgtqbmtTW808iWq9p6o9W3Kt7l-Y34eXOPTrEJxbPCCOg_Pb5MTUj-k_xw1OsZROFVikTWIJLnCA33iwIgT_bPF1CtuYCiP6o8SWqiCr2VVk_fZB_p1-Ekq1KfsiHDcqmJJAMskV-gWh6Pz4PRrV2TSQ0QtwWv-nkq4hUNlPGKFgMAj740G0OHa5wKdLqd5W5aJi7yr1IP9ijrDTKdB4SBUXhiYUKipYnD7XTmW0TwqAPe7Hc-kA"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="pt-32 pb-20 px-8 max-w-[1600px] mx-auto dot-grid min-h-screen">
+<!-- Workflow Section -->
+<div class="grid grid-cols-12 gap-12 items-center mb-16 relative">
+<!-- Left Column: Talent Input -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_40px_40px_-15px_rgba(47,51,50,0.04)] border border-outline-variant/10">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+</div>
+<h2 class="font-headline text-2xl font-semibold">Upload Resume</h2>
+</div>
+<div class="border-2 border-dashed border-outline-variant/30 rounded-lg p-10 text-center bg-surface-container-low group cursor-pointer transition-all hover:bg-primary-container/20">
+<span class="material-symbols-outlined text-4xl text-outline mb-4 group-hover:text-primary transition-colors">description</span>
+<p class="text-sm text-on-surface-variant">Drag and drop your PDF or DOCX here</p>
+</div>
+</div>
+<!-- Processing Step 1 -->
+<div class="flex items-center gap-6 pl-8">
+<div class="w-1 bg-primary h-12"></div>
+<div class="bg-surface-container-high px-6 py-4 rounded-full flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">settings_suggest</span>
+<span class="text-xs font-label font-medium tracking-widest uppercase">Resume Parser</span>
+</div>
+</div>
+<!-- Processing Step 2 -->
+<div class="flex items-center gap-6 pl-8">
+<div class="w-1 bg-primary/40 h-12"></div>
+<div class="bg-surface-container-high px-6 py-4 rounded-full flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">psychology</span>
+<span class="text-xs font-label font-medium tracking-widest uppercase">Skill Extractor</span>
+</div>
+</div>
+</div>
+<!-- Central: Engine -->
+<div class="col-span-12 lg:col-span-4 flex flex-col items-center justify-center relative">
+<!-- Connecting Lines (Decorative SVG) -->
+<div class="absolute inset-0 -z-10 pointer-events-none hidden lg:block">
+<svg class="w-full h-full" viewbox="0 0 400 400">
+<path d="M 50 150 L 150 200" fill="none" stroke="#afb3b0" stroke-width="0.5"></path>
+<path d="M 350 150 L 250 200" fill="none" stroke="#afb3b0" stroke-width="0.5"></path>
+<path d="M 200 300 L 200 380" fill="none" stroke="#afb3b0" stroke-width="0.5"></path>
+</svg>
+</div>
+<div class="hex-container bg-on-background w-72 h-80 flex flex-col items-center justify-center text-center p-8 text-surface-bright shadow-2xl">
+<span class="material-symbols-outlined text-primary-fixed-dim text-5xl mb-4" style="font-variation-settings: 'FILL' 1;">hub</span>
+<h3 class="font-headline text-2xl italic mb-2">Matching Engine</h3>
+<p class="text-xs font-label tracking-widest uppercase text-surface-variant/70">Gap Analyzer v.4.0</p>
+</div>
+<div class="mt-8 px-6 py-2 bg-primary text-on-primary rounded-full font-label text-[10px] tracking-[0.2em] uppercase">
+                    Neural Alignment Active
+                </div>
+</div>
+<!-- Right Column: Opportunity Input -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_40px_40px_-15px_rgba(47,51,50,0.04)] border border-outline-variant/10">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">assignment</span>
+</div>
+<h2 class="font-headline text-2xl font-semibold">Paste Job Description</h2>
+</div>
+<textarea class="w-full h-32 bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 rounded-lg p-4 font-body text-sm text-on-surface-variant resize-none" placeholder="Paste the text from the LinkedIn or Indeed posting..."></textarea>
+</div>
+<!-- Processing Step 1 -->
+<div class="flex items-center gap-6 justify-end pr-8">
+<div class="bg-surface-container-high px-6 py-4 rounded-full flex items-center gap-3">
+<span class="text-xs font-label font-medium tracking-widest uppercase">Job Parser</span>
+<span class="material-symbols-outlined text-secondary text-sm">data_object</span>
+</div>
+<div class="w-1 bg-secondary h-12"></div>
+</div>
+<!-- Processing Step 2 -->
+<div class="flex items-center gap-6 justify-end pr-8">
+<div class="bg-surface-container-high px-6 py-4 rounded-full flex items-center gap-3">
+<span class="text-xs font-label font-medium tracking-widest uppercase">Requirements Map</span>
+<span class="material-symbols-outlined text-secondary text-sm">account_tree</span>
+</div>
+<div class="w-1 bg-secondary/40 h-12"></div>
+</div>
+</div>
+</div>
+<!-- Mentor Agent Dashboard -->
+<div class="mt-20 bg-surface-container-highest p-1 lg:p-12 rounded-lg relative overflow-hidden">
+<!-- Branding Overlay -->
+<div class="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
+<span class="font-headline text-9xl italic font-bold">Strategy</span>
+</div>
+<div class="grid grid-cols-12 gap-12 relative z-10">
+<!-- Col 1: Match Gauge -->
+<div class="col-span-12 md:col-span-3 flex flex-col items-center justify-center bg-surface-container-lowest rounded-lg p-8 shadow-sm">
+<div class="relative w-48 h-48 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-low" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="82.93" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline text-5xl font-bold text-on-surface">85%</span>
+<span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Match Score</span>
+</div>
+</div>
+<p class="mt-6 text-sm text-center text-on-surface-variant italic">High compatibility detected with primary technical requirements.</p>
+</div>
+<!-- Col 2: Missing Skills -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest rounded-lg p-8 shadow-sm">
+<h4 class="font-headline text-xl mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+                        Skill Gaps Identified
+                    </h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-error-container/10 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-sm">close</span>
+<span class="text-sm font-medium">Distributed Systems (Kafka)</span>
+</div>
+<span class="text-[10px] px-2 py-1 bg-error/10 text-error rounded uppercase font-bold">Critical</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">info</span>
+<span class="text-sm font-medium">GraphQL API Design</span>
+</div>
+<span class="text-[10px] px-2 py-1 bg-tertiary/10 text-tertiary rounded uppercase font-bold">Secondary</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">info</span>
+<span class="text-sm font-medium">Project Leadership (Agile)</span>
+</div>
+<span class="text-[10px] px-2 py-1 bg-tertiary/10 text-tertiary rounded uppercase font-bold">Secondary</span>
+</div>
+</div>
+</div>
+<!-- Col 3: Roadmap -->
+<div class="col-span-12 md:col-span-5 bg-on-background rounded-lg p-8 shadow-xl text-surface-bright">
+<h4 class="font-headline text-xl mb-8 flex items-center gap-2 italic">
+<span class="material-symbols-outlined text-primary-fixed-dim">timeline</span>
+                        7-Day Skill Acquisition Roadmap
+                    </h4>
+<div class="relative pl-8 space-y-10 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[1px] before:bg-surface-variant/20">
+<div class="relative">
+<div class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center border-4 border-on-background">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-label tracking-widest uppercase text-primary-fixed-dim">Days 1-2</p>
+<h5 class="text-sm font-medium">Core Kafka Concepts &amp; Messaging Patterns</h5>
+</div>
+<span class="material-symbols-outlined text-surface-variant/40 text-sm">play_circle</span>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-surface-variant/30 flex items-center justify-center border-4 border-on-background"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-label tracking-widest uppercase text-surface-variant/50">Days 3-5</p>
+<h5 class="text-sm font-medium">Hands-on Lab: GraphQL vs REST Architectures</h5>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-surface-variant/30 flex items-center justify-center border-4 border-on-background"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-label tracking-widest uppercase text-surface-variant/50">Day 7</p>
+<h5 class="text-sm font-medium">Mock Interview: System Design Deep-Dive</h5>
+</div>
+<span class="material-symbols-outlined text-surface-variant/40 text-sm">lock</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Navigation (Mobile Hidden) -->
+<aside class="hidden xl:flex flex-col h-full py-10 h-screen w-72 fixed left-0 top-0 bg-[#e0e3e0] z-40">
+<div class="px-10 mb-12">
+<div class="text-xl font-serif text-[#222222]">The Curator</div>
+<div class="text-[10px] font-label tracking-widest uppercase text-[#506454] mt-1">AI Career Strategist</div>
+</div>
+<nav class="flex-1 space-y-2">
+<div class="flex items-center gap-4 bg-[#f9f9f7] text-[#506454] rounded-l-full ml-4 pl-6 py-4 font-sans text-sm tracking-wide uppercase font-['Inter'] cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</div>
+<div class="flex items-center gap-4 text-[#2f3332]/70 pl-10 py-4 font-sans text-sm tracking-wide uppercase font-['Inter'] cursor-pointer hover:bg-[#f9f9f7]/50 transition-all">
+<span class="material-symbols-outlined">insights</span>
+<span>Career Path</span>
+</div>
+<div class="flex items-center gap-4 text-[#2f3332]/70 pl-10 py-4 font-sans text-sm tracking-wide uppercase font-['Inter'] cursor-pointer hover:bg-[#f9f9f7]/50 transition-all">
+<span class="material-symbols-outlined">shutter_speed</span>
+<span>Skill Gap</span>
+</div>
+<div class="flex items-center gap-4 text-[#2f3332]/70 pl-10 py-4 font-sans text-sm tracking-wide uppercase font-['Inter'] cursor-pointer hover:bg-[#f9f9f7]/50 transition-all">
+<span class="material-symbols-outlined">description</span>
+<span>Applications</span>
+</div>
+<div class="flex items-center gap-4 text-[#2f3332]/70 pl-10 py-4 font-sans text-sm tracking-wide uppercase font-['Inter'] cursor-pointer hover:bg-[#f9f9f7]/50 transition-all">
+<span class="material-symbols-outlined">folder_shared</span>
+<span>Documents</span>
+</div>
+</nav>
+<div class="px-10 mt-auto pt-10">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label text-xs tracking-widest uppercase hover:opacity-90 transition-opacity">
+                Upgrade to Premium
+            </button>
+<div class="mt-8 space-y-4">
+<div class="flex items-center gap-3 text-on-surface-variant/70 cursor-pointer">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span class="text-xs uppercase tracking-tighter">Support</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant/70 cursor-pointer">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span class="text-xs uppercase tracking-tighter">Sign Out</span>
+</div>
+</div>
+</div>
+</aside>
+</body></html>
