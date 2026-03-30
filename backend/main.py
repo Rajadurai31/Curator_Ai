@@ -49,12 +49,26 @@ async def log_requests(request: Request, call_next):
 # ── Startup ───────────────────────────────────────────────────────────────────
 @app.on_event("startup")
 def on_startup():
-    log.info("Starting Curator AI backend…")
+    log.info("Starting Curator AI backend...")
     try:
         init_db()
         log.info("✅ Database tables ready")
     except Exception as e:
         log.warning("⚠️  DB init skipped: %s", e)
+
+    # Pre-load the sentence-transformer model in a background thread
+    # so the first analysis request doesn't time out
+    import threading
+    def _preload():
+        try:
+            log.info("Pre-loading sentence-transformer model...")
+            from services.matching_engine import _get_model
+            _get_model()
+            log.info("✅ Sentence-transformer model ready")
+        except Exception as e:
+            log.warning("⚠️  Model preload failed: %s", e)
+    threading.Thread(target=_preload, daemon=True).start()
+
     log.info("✅ Server ready — http://localhost:8000")
     log.info("   Docs: http://localhost:8000/docs")
 
