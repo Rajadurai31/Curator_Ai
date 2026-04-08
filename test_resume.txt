@@ -1,0 +1,14 @@
+John Doe
+Software Engineer
+
+Skills:
+- Python
+- JavaScript
+- React
+- FastAPI
+- SQL
+
+Experience:
+- 3 years as Full Stack Developer
+- Built web applications using React and Python
+- Worked with databases and APIs
