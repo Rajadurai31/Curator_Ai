@@ -4,11 +4,25 @@ import os
 from groq import Groq
 
 log = logging.getLogger("curator.job_parser")
+<<<<<<< HEAD
 def _get_client() -> Groq:
     key = os.getenv("GROQ_API_KEY", "")
     if not key:
         raise RuntimeError("GROQ_API_KEY is not set in .env")
     return Groq(api_key=key)
+=======
+_client = None
+
+
+def _get_client() -> Groq:
+    global _client
+    if _client is None:
+        key = os.getenv("GROQ_API_KEY", "")
+        if not key:
+            raise RuntimeError("GROQ_API_KEY is not set in .env")
+        _client = Groq(api_key=key)
+    return _client
+>>>>>>> c23b69260832456d0fdb5899b100a95918ee500f
 
 
 def extract_job_skills(job_text: str) -> dict:
